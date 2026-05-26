@@ -465,7 +465,7 @@ function About({ t }) {
               I'm a backend and platform engineer with a focus on building things that <span style={{ color: t.text, fontWeight: 600 }}>don't break at 3am</span> — distributed systems, Kafka platforms, cloud-native APIs, and the operational tooling that keeps engineering teams from drowning in noise.
             </p>
             <p>
-              At Maersk, I lead platform engineering for a Kafka administration team, shipping Go-based provisioning APIs, managing 80+ topics and schemas, and building the internal developer tools that other teams depend on. I've also been building an AI layer on top of that — Agentic AI, RAG, and LLM-powered ranking to help on-call engineers focus on what actually matters.
+              At Maersk, I work on platform engineering for a Kafka administration team, shipping Go-based provisioning APIs, managing 80+ topics and schemas, and building the internal developer tools that other teams depend on. I've also been building an AI layer on top of that — Agentic AI, RAG, and LLM-powered ranking to help on-call engineers focus on what actually matters.
             </p>
             <p style={{ marginBottom: 0 }}>
               I care about <span style={{ color: t.text, fontWeight: 600 }}>production reliability, clean API contracts, and systems that explain themselves</span>. I graduated with a 9.91 CGPA in Computer Science — but the real education has been on-call rotations, incident timelines, and shipping things that scale.
