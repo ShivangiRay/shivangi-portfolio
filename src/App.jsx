@@ -480,7 +480,6 @@ function About({ t }) {
               { n: c1, suffix: "+", label: "Years of Production Engineering", color: t.accent },
               { n: c2, suffix: "+", label: "gRPC/REST APIs Shipped", color: t.green },
               { n: c3, suffix: "+", label: "Kafka Topics Administered", color: t.gold },
-              // Counter animates from 0 to 10000
             ].map(({ n, suffix, label, color }) => (
               <div key={label} style={{
                 background: t.surface, border: `1px solid ${t.border}`,
