@@ -50,7 +50,7 @@ const SKILLS = [
   },
   {
     group: "AI Engineering",
-    items: ["Agentic AI", "RAG", "LLM Orchestration", "Tool-Calling Agents", "MCP", "Semantic Search", "Vector Retrieval"],
+    items: ["Agentic AI", "RAG", "MCP (Model Context Protocol)", "Ollama", "LLM Orchestration", "Tool-Calling Agents", "Semantic Search", "Vector Retrieval"],
   },
   {
     group: "Messaging & Data",
@@ -74,7 +74,7 @@ const EXPERIENCE = [
     location: "Bengaluru, India",
     color: "#00c2ff",
     highlights: [
-      "Administer 80+ Kafka topics, schemas, ACLs, consumer groups, and connectors across multiple engineering teams",
+      "Administer 10K+ Kafka topics, schemas, ACLs, consumer groups, and connectors across multiple engineering teams",
       "Built Azure & Microsoft Graph API-powered daily scrum dashboard integrating 10+ operational sources",
       "Added Agentic AI, RAG, semantic retrieval, and LLM-powered ranking to reduce daily triage noise",
       "Build Go-based REST/gRPC self-service provisioning APIs for Kafka governance workflows",
@@ -117,19 +117,20 @@ const EXPERIENCE = [
 const PROJECTS = [
   {
     title: "Autonomous API Migration Engineer",
-    subtitle: "AI-Assisted Platform Engineering",
+    subtitle: "AI-Assisted Platform Engineering · MCP Server",
     period: "May 2026",
     github: "https://github.com/ShivangiRay/autonomous-api-migration-engineer",
     color: "#00c2ff",
     glow: "rgba(0,194,255,0.2)",
-    stack: ["Python", "FastAPI", "React", "gRPC", "RAG", "Agentic AI", "MCP"],
+    stack: ["Python", "FastAPI", "React", "gRPC", "RAG", "Agentic AI", "MCP", "Ollama"],
     description:
-      "Production-grade AI platform that analyzes legacy REST APIs and autonomously recommends migration paths to gRPC, event-driven architecture, or improved contract design — with a human-in-the-loop approval workflow.",
+      "Production-grade AI platform and MCP server that analyzes legacy REST APIs and autonomously recommends migration paths to gRPC or event-driven architecture — with local LLM classification via Ollama, RAG-backed proposal memory, and a human-in-the-loop approval workflow.",
     bullets: [
+      "Ships as a Model Context Protocol (MCP) server — callable from Claude Desktop, Cursor, and Gemini CLI via stdio or HTTP/SSE",
+      "Local LLM integration via Ollama (llama3.2) for intelligent endpoint classification instead of deterministic rules",
       "Multi-agent pipeline: scanner → planner → contract generator → verifier → reporter → implementer",
-      "Generates .proto contracts, AsyncAPI schemas, compatibility reports, and ADRs",
-      "RAG-backed proposal memory learns from prior approved migrations",
-      "Kafka vs RabbitMQ transport recommendations based on durability, replay, and ordering tradeoffs",
+      "RAG-backed proposal memory learns from prior approved migrations to improve future recommendations",
+      "Generates .proto contracts, AsyncAPI schemas, compatibility reports, gRPC service stubs, and mapping tests",
     ],
   },
   {
@@ -447,7 +448,7 @@ function About({ t }) {
   const [ref, visible] = useScrollReveal();
   const c1 = useCounter(3, visible);
   const c2 = useCounter(15, visible);
-  const c3 = useCounter(80, visible);
+  const c3 = useCounter(10000, visible, 2400);
   return (
     <section id="about" style={{ padding: "100px 24px", maxWidth: 1100, margin: "0 auto" }}>
       <Reveal t={t}>
@@ -465,7 +466,7 @@ function About({ t }) {
               I'm a backend and platform engineer with a focus on building things that <span style={{ color: t.text, fontWeight: 600 }}>don't break at 3am</span> — distributed systems, Kafka platforms, cloud-native APIs, and the operational tooling that keeps engineering teams from drowning in noise.
             </p>
             <p>
-              At Maersk, I work on platform engineering for a Kafka administration team, shipping Go-based provisioning APIs, managing 80+ topics and schemas, and building the internal developer tools that other teams depend on. I've also been building an AI layer on top of that — Agentic AI, RAG, and LLM-powered ranking to help on-call engineers focus on what actually matters.
+              At Maersk, I work on platform engineering for a Kafka administration team, shipping Go-based provisioning APIs, managing 10K+ topics and schemas, and building the internal developer tools that other teams depend on. I've also been building an AI layer on top of that — Agentic AI, RAG, and LLM-powered ranking to help on-call engineers focus on what actually matters.
             </p>
             <p style={{ marginBottom: 0 }}>
               I care about <span style={{ color: t.text, fontWeight: 600 }}>production reliability, clean API contracts, and systems that explain themselves</span>. I graduated with a 9.91 CGPA in Computer Science — but the real education has been on-call rotations, incident timelines, and shipping things that scale.
@@ -479,6 +480,7 @@ function About({ t }) {
               { n: c1, suffix: "+", label: "Years of Production Engineering", color: t.accent },
               { n: c2, suffix: "+", label: "gRPC/REST APIs Shipped", color: t.green },
               { n: c3, suffix: "+", label: "Kafka Topics Administered", color: t.gold },
+              // Counter animates from 0 to 10000
             ].map(({ n, suffix, label, color }) => (
               <div key={label} style={{
                 background: t.surface, border: `1px solid ${t.border}`,
